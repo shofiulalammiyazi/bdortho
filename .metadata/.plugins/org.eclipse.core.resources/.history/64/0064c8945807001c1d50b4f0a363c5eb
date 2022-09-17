@@ -1,0 +1,26 @@
+package com.bdortho.stock.service;
+
+import org.springframework.stereotype.Service;
+
+import com.bdortho.stock.model.CompanyModel;
+import com.bdortho.stock.repositories.CompanyRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class CompanySevice {
+	
+    private final CompanyRepository companyRepository;
+	
+	public CompanyModel save(CompanyModel CompanyModel) {
+		companyRepository.save(CompanyModel);
+		return CompanyModel;
+	}
+	
+	public CompanyModel getById(Long id) {
+		CompanyModel company = companyRepository.getOne(id);
+		return  company;
+	}
+
+}

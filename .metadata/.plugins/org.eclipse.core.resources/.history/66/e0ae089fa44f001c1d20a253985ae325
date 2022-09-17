@@ -1,0 +1,40 @@
+package com.bdortho.stock.service;
+
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.bdortho.stock.model.CompanyModel;
+import com.bdortho.stock.model.PurchaseDitalsModel;
+import com.bdortho.stock.model.PurchaseModel;
+import com.bdortho.stock.repositories.PurchaseRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class PurchaseService {
+	
+private final PurchaseRepository purchaseRepository;
+	
+	public PurchaseModel save(PurchaseModel PurchaseModel) {
+		System.out.println(PurchaseModel.getPurchaseDitalsModel().size());
+		System.out.println(PurchaseModel.getPurchaseDitalsModel().get(0).getProduct());
+		
+		purchaseRepository.save(PurchaseModel);
+		
+		return PurchaseModel;
+	}
+	
+	public PurchaseModel getById(Long id) {
+		PurchaseModel purchase = purchaseRepository.getOne(id);
+		return  purchase;
+	}
+	
+	public List<PurchaseModel> getAll() {
+		List<PurchaseModel> purchase = purchaseRepository.findAll(Sort.by(Sort.Direction.DESC, "updatedAt"));
+		return purchase;
+	}
+
+}

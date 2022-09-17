@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Company Create</title>
+	<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/vendor/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/vendor/themify-icons/themify-icons.min.css">
+	<link href="/vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">
+	<link href="/vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" media="screen">
+	<link href="/vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">
+	<!-- end: MAIN CSS -->
+	<!-- start: CLIP-TWO CSS -->
+	<link rel="stylesheet" href="/assets/css/styles.css">
+	<link rel="stylesheet" href="/assets/css/plugins.css">
+	<link rel="stylesheet" href="/assets/css/themes/theme-1.css" id="skin_color" />
+
+
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/vendor/modernizr/modernizr.js"></script>
+	<script src="/vendor/jquery-cookie/jquery.cookie.js"></script>
+	<script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="/vendor/switchery/switchery.min.js"></script>
+		
+	<script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
+	<script src="/assets/js/main.js"></script>
+	<script src="/assets/js/login.js"></script>
+	
+	
+</head>
+<style>
+	body {
+		background-color: #C1B2B2;
+	}
+
+	.bg-light-skyblue{ 
+	 	background-color: #bdc2db;
+	 	margin-top: 50px;
+	 }
+	 
+	 
+	
+	 
+</style>
+
+<body>
+<form method="post" th:action="@{/purchase/save}">
+	<div id="app">
+		<div>
+			<div class="wrap-content container" id="container">
+				<section id="page-title" class="bg-light-skyblue">
+					<div class="row">
+						<div class="col-sm-8">
+							<h1 class="mainTitle">Purchase</h1>	
+						</div>
+
+						<div class="col-sm-4 text-right">
+							<button class="btn btn-success" data-toggle="modal" onclick="editPageLoad()">Create</button>
+						</div>
+					</div>
+				</section>
+				
+				<div>
+					<div class="col-sm-6">
+						<div><label>Supplier</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="supplier" name="supplier" placeholder="Supplier"></div>
+						
+						<div><label>Address</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="address" name="address" placeholder="Address"></div>
+						
+						<div><label>Invoice No</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="invoiceno" name="invoice_no" placeholder="Invoice No"></div>
+					</div>
+					<div class="col-sm-6">
+						<div><label>Purchase No</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="purchase no" name="purchase_no" placeholder="Purchaseno"></div>
+						
+						<div><label>Date</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="date" name="date" placeholder="Date"></div>
+					</div>
+				</div>
+				
+				<div class="container-fluid container-fullw bg-white">
+					<div class="row">
+						<div class="col-md-12">
+							<div>
+								<div class="row">
+									<div class="col-sm-12">
+										<table id="table" class="table table-striped">
+											<thead>
+												<tr>
+													<th>Product</th>
+													<th>Qty</th>
+													<th>Price</th>
+													<th>Discount</th>
+													<th>Total</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><input type="text" class="form-control" id="product" name="purchaseDitalsModel[0].product" placeholder="Product name ...."></td>
+													<td><input type="text" class="form-control" id="qty" name="purchaseDitalsModel[0].qty" placeholder="qty ...."></td>
+													<td><input type="text" class="form-control" id="price" name="purchaseDitalsModel[0].price" placeholder="price ...."></td>
+													<td><input type="text" class="form-control" id="discount" name="purchaseDitalsModel[0].discount" placeholder="discount ...."></td>
+													<td><input type="text" class="form-control" id="total" name="purchaseDitalsModel[0].total" placeholder="total ...."></td>
+												</tr>
+												<tr>
+													<td><input type="text" class="form-control" id="product" name="purchaseDitalsModel[1].product" placeholder="Product name ...."></td>
+													<td><input type="text" class="form-control" id="qty" name="purchaseDitalsModel[1].qty" placeholder="qty ...."></td>
+													<td><input type="text" class="form-control" id="price" name="purchaseDitalsModel[1].price" placeholder="price ...."></td>
+													<td><input type="text" class="form-control" id="discount" name="purchaseDitalsModel[1].discount" placeholder="discount ...."></td>
+													<td><input type="text" class="form-control" id="total" name="purchaseDitalsModel[1].total" placeholder="total ...."></td>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+
+
+<form method="post" id="show-page">
+	<div id="app">
+		<div>
+			<div class="wrap-content container" id="container">
+				<section id="page-title" class="bg-light-skyblue">
+					<div class="row">
+						<div class="col-sm-8">
+							<h1 class="mainTitle">Purchase</h1>	
+						</div>
+
+						<div class="col-sm-4 text-right">
+							<button class="btn btn-success" data-toggle="modal" onclick="editPageLoad()">Show</button>
+						</div>
+					</div>
+				</section>
+				
+				<div>
+					<div class="col-sm-6">
+						<div><label>Supplier</label></div>
+						<div class="form-group"><span></span></div>
+						
+						<div><label>Address</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="address" name="address" placeholder="Address"></div>
+						
+						<div><label>Invoice No</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="invoiceno" name="invoice_no" placeholder="Invoice No"></div>
+					</div>
+					<div class="col-sm-6">
+						<div><label>Purchase No</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="purchase no" name="purchase_no" placeholder="Purchaseno"></div>
+						
+						<div><label>Date</label></div>
+						<div class="form-group"><input type="text" class="form-control" id="date" name="date" placeholder="Date"></div>
+					</div>
+				</div>
+				
+				<div class="container-fluid container-fullw bg-white">
+					<div class="row">
+						<div class="col-md-12">
+							<div>
+								<div class="row">
+									<div class="col-sm-12">
+										<table id="table" class="table table-striped">
+											<thead>
+												<tr>
+													<th>Product</th>
+													<th>Qty</th>
+													<th>Price</th>
+													<th>Discount</th>
+													<th>Total</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><input type="text" class="form-control" id="product" name="purchaseDitalsModel[0].product" placeholder="Product name ...."></td>
+													<td><input type="text" class="form-control" id="qty" name="purchaseDitalsModel[0].qty" placeholder="qty ...."></td>
+													<td><input type="text" class="form-control" id="price" name="purchaseDitalsModel[0].price" placeholder="price ...."></td>
+													<td><input type="text" class="form-control" id="discount" name="purchaseDitalsModel[0].discount" placeholder="discount ...."></td>
+													<td><input type="text" class="form-control" id="total" name="purchaseDitalsModel[0].total" placeholder="total ...."></td>
+												</tr>
+												<tr>
+													<td><input type="text" class="form-control" id="product" name="purchaseDitalsModel[1].product" placeholder="Product name ...."></td>
+													<td><input type="text" class="form-control" id="qty" name="purchaseDitalsModel[1].qty" placeholder="qty ...."></td>
+													<td><input type="text" class="form-control" id="price" name="purchaseDitalsModel[1].price" placeholder="price ...."></td>
+													<td><input type="text" class="form-control" id="discount" name="purchaseDitalsModel[1].discount" placeholder="discount ...."></td>
+													<td><input type="text" class="form-control" id="total" name="purchaseDitalsModel[1].total" placeholder="total ...."></td>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+
+</body>	
+
+
+
+
+<script>
+	/* if (!!id) {
+		showPageLoad(id);
+	}
+
+	function showPageLoad(id) {
+		$.ajax({
+			url: '/company/get-by-id?id='+id,
+			success: function (response, xhr, status) {
+				$('#show-page #name').text(response.name);
+				$('#show-page #address').text(response.address);
+				
+				$('#show-page .btn-edit').attr('onclick', 'editPageLoad('+response.id+')')
+				$('#show-page .btn-delete').attr('onclick', 'deletePageLoad('+response.id+')')
+				
+				$('#show-page').modal("toggle");
+			}
+		})
+	}
+	
+	function editPageLoad(id) {
+		if (!id) {
+			$('#create-modal input').val('');
+			$('#create-modal').modal("toggle");
+		}
+		else {
+			$.ajax({
+				url: '/company/get-by-id?id='+id,
+				success: function (response, xhr, status) {
+					$('#create-modal #id').val(response.id);
+					$('#create-modal #name').val(response.name);
+					$('#create-modal #address').val(response.address);
+					
+					$('#create-modal').modal("toggle");
+				}
+			})
+		}
+	}
+	
+	function deletePageLoad(id) {
+		$('#delete-page #id').val(id);
+		$('#delete-page').modal("toggle");
+	}
+	
+	$(document).ready(() => {
+		$('#table').DataTable({dom : 'rfltip'});
+	}) */
+</script>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+

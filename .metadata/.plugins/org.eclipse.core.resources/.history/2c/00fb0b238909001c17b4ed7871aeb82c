@@ -1,0 +1,50 @@
+package com.bdortho.stock.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bdortho.stock.model.CustomerModel;
+import com.bdortho.stock.service.CustomerService;
+
+import lombok.RequiredArgsConstructor;
+
+
+@Controller
+@RequiredArgsConstructor
+@RequestMapping("/customer")
+public class CustomerController {
+	
+	private final CustomerService customerService;
+	
+	@GetMapping("/create")
+	public String home(Model model) {
+		CustomerModel customerModel = new CustomerModel();
+		model.addAttribute("customerModel", customerModel);
+		return "/home/customer/customerCreate";
+	}
+	
+	@PostMapping("/save")
+	public String save(CustomerModel customerModel) {
+		customerService.save(customerModel);
+		return "redirect:/home/customer/customerShow?id="+customerModel.getId();
+	}
+	
+	@GetMapping("/show")
+	public String show(Model model, Long id) {
+		CustomerModel customerModel = customerService.getById(id);
+		System.out.println("+++++++++++++++++++++");
+		model.addAttribute("customerModel", customerModel);
+		return "/home/customer/customerShow";
+	}
+	
+	@GetMapping("/edit")
+	public String edit(Model model, Long id) {
+		CustomerModel customerModel = customerService.getById(id);
+		model.addAttribute("customerModel", customerModel);
+		return "/home/customer/customerCreate";
+	}
+
+}

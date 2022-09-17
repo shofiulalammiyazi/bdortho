@@ -1,0 +1,34 @@
+package com.bdortho.stock.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bdortho.stock.model.PurchaseModel;
+import com.bdortho.stock.model.SalesModel;
+import com.bdortho.stock.service.SalesService;
+
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+@RequestMapping("/sales")
+public class SalesController {
+	
+	private final SalesService salesService;
+	
+	@GetMapping("/create")
+	public String home(Model model) {
+		model.addAttribute("sales", new SalesModel());
+		return "/home/sales/salesCreate";
+	}
+	
+	@PostMapping("/save")
+	public String save(SalesModel salesModel) {
+		salesService.save(salesModel);
+		return "redirect:/home/sales/salesShow?id="+salesModel.getId();
+	}
+
+}

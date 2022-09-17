@@ -1,0 +1,51 @@
+package com.bdortho.stock.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bdortho.stock.model.CompanyModel;
+import com.bdortho.stock.model.DemoModel;
+import com.bdortho.stock.service.CompanySevice;
+
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+@RequestMapping("/company")
+public class CompanyController {
+	
+	private final CompanySevice companyService;
+	
+	@GetMapping("/create")
+	public String home(Model model) {
+		CompanyModel companyModel = new CompanyModel();
+		model.addAttribute("companyModel", companyModel);
+		return "/home/company/companyCreate";
+	}
+	
+	@PostMapping("/save")
+	public String save(CompanyModel companyModel) {
+		companyService.save(companyModel);
+		return "redirect:/home/company/companyShow?id="+companyModel.getId();
+	}
+	
+	@GetMapping("/show")
+	public String show(Model model, Long id) {
+		CompanyModel companyModel = companyService.getById(id);
+		model.addAttribute("companyModel", companyModel);
+		System.out.println("+++++++++++++++++++++jjjjjjjjjjjjjjj.companyModel.getName()");
+		return "/home/company/companyShow";
+	}
+	
+	
+	@GetMapping("/edit")
+	public String edit(Model model, Long id) {
+		CompanyModel companyModel = companyService.getById(id);
+		model.addAttribute("companyModel", companyModel);
+		return "/home/company/create";
+	}
+	
+}

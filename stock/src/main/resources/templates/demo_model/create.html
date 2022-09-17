@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Demo Model</title>
+<link rel="stylesheet" href="css/test.css">
+
+<title>Company Create</title>
+	<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/vendor/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/vendor/themify-icons/themify-icons.min.css">
+	<link href="/vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">
+	<link href="/vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" media="screen">
+	<link href="/vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">
+	<!-- end: MAIN CSS -->
+	<!-- start: CLIP-TWO CSS -->
+	<link rel="stylesheet" href="/assets/css/styles.css">
+	<link rel="stylesheet" href="/assets/css/plugins.css">
+	<link rel="stylesheet" href="/assets/css/themes/theme-1.css" id="skin_color" />
+
+
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/vendor/modernizr/modernizr.js"></script>
+	<script src="/vendor/jquery-cookie/jquery.cookie.js"></script>
+	<script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="/vendor/switchery/switchery.min.js"></script>
+		
+	<script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
+	<script src="/assets/js/main.js"></script>
+	<script src="/assets/js/login.js"></script>
+	
+	
+</head>
+<body>
+	<form method="post" th:action="@{/demo-model/save}">
+		<input name="id" th:value="${demoModel.getId()}" type="hidden" placeholder="ID">
+		<input name="code" th:value="${demoModel.getCode()}" type="text" placeholder="Code">
+		<input name="name" th:value="${demoModel.getName()}" type="text" placeholder="Name">
+		
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>

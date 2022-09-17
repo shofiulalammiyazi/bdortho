@@ -1,0 +1,21 @@
+package com.bdortho.stock.service;
+
+import org.springframework.stereotype.Service;
+
+import com.bdortho.stock.model.ProductModel;
+import com.bdortho.stock.repositories.ProductRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ProductService {
+	
+	private final ProductRepository productRepository;
+	
+	public ProductModel save(ProductModel productModel) {
+		productRepository.save(productModel);
+		return productModel;
+	}
+
+}

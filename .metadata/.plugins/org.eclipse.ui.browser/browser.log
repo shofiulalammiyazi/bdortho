@@ -1,0 +1,3 @@
+
+Aug 21, 2021 17:52:42.69 NEW SESSION
+Aug 21, 2021 17:52:42.70 [984:6168:0821/175242.693:ERROR:device_event_log_impl.cc(214)] [17:52:42.693] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
