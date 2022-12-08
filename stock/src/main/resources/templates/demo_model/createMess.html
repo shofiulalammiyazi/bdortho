@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div>
+
+
+        <form action="http://sms.sslwireless.com/pushapi/dynamic/server.php" method="post">
+            <input type="hidden" value="username" name="user" />
+            <input type="hidden" value="password" name="pass" />
+            <input type="hidden" value="XXXXXXXXXXXXXXXXXXXX" name="sid" />
+            <input type="hidden" value="880XXXXXXXXXX" name="sms[0][0]" />
+            <input type="hidden" value="Test SMS One" name="sms[0][1]" />
+            <input type="hidden" value="123456789" name="sms[0][2]" />
+            <input type="hidden" value="880XXXXXXXXXX " name="sms[1][0]" />
+            <input type="hidden" value="Test SMS Two" name="sms[1][1]" />
+            <input type="hidden" value="123456790" name="sms[1][2]" />
+            <input type="submit" />
+        </form>
+
+
+
+
+        <!--<form>
+            <div>
+                <label>Number</label>
+                <input type="text" name="number">
+            </div>
+            <div>
+
+                <textarea name="mess"></textarea>
+            </div>
+            <button type="submit">Sent</button>
+
+        </form>-->
+    </div>
+
+
+
+
+</body>
+</html>

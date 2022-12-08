@@ -17,8 +17,8 @@ public class PurchaseService {
 private final PurchaseRepository purchaseRepository;
 	
 	public PurchaseModel save(PurchaseModel PurchaseModel) {
-		System.out.println(PurchaseModel.getPurchaseDitalsModel().size());
-		System.out.println(PurchaseModel.getPurchaseDitalsModel().get(0).getProduct());
+		//System.out.println(PurchaseModel.PurchaseDetails().size());
+		//System.out.println(PurchaseModel.PurchaseDetails().get(0).getProduct());
 		
 		purchaseRepository.save(PurchaseModel);
 		

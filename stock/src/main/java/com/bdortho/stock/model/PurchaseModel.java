@@ -3,13 +3,7 @@ package com.bdortho.stock.model;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,10 +20,24 @@ public class PurchaseModel {
 	private String invoice_no;
 	private String purchase_no;
 	private String date;
-	private String purchase_id;
-	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	private List<PurchaseDitalsModel> purchaseDitalsModel;
+
+	@Transient
+	private List<String> product;
+
+	@Transient
+	private String qty;
+
+	@Transient
+	private String price;
+
+	@Transient
+	private String discount;
+
+	@Transient
+	private String total;
+
+	@OneToMany(mappedBy = "purchaseModel")
+	private List<PurchaseDetails> PurchaseDetails;
 	
 	private Timestamp updatedAt;
 	public PurchaseModel() {
